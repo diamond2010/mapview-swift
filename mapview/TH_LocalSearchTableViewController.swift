@@ -40,14 +40,6 @@ class TH_LocalSearchTableViewController: UITableViewController,CLLocationManager
         }else{
            let ctrl = UIAlertController(title: "no Services Available", message: "please make sure that you can use locationservices", preferredStyle:UIAlertControllerStyle.Alert)
         }
-        
-      
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-        
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
     
     //search
@@ -66,19 +58,12 @@ class TH_LocalSearchTableViewController: UITableViewController,CLLocationManager
                     println("No matches found")
                 } else {
                     for item in response!.mapItems as! [MKMapItem] {
-                        println("Name = \(item.name)")
-                        println("Phone = \(item.phoneNumber)")
-                        
                         self.pointsOfInterest.append(item as MKMapItem)
-                        println("Matching items = \(self.pointsOfInterest.count)")
                         
                         var annotation = MKPointAnnotation()
                         annotation.coordinate = item.placemark.coordinate
                         annotation.title = item.name
                         self.annotations.append(annotation);
-                        println("Annotations  = \(self.annotations.count)")
-                        
-                        
                     }
                     self.tableView.reloadData()
                 }
@@ -88,8 +73,6 @@ class TH_LocalSearchTableViewController: UITableViewController,CLLocationManager
             if !localSearch.searching{
                 localSearch.startWithCompletionHandler(lSCompletionHandler)
             }
-            
-            
         }
     }
     
@@ -128,10 +111,9 @@ class TH_LocalSearchTableViewController: UITableViewController,CLLocationManager
     }
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! UITableViewCell
-        cell.textLabel?.text = self.pointsOfInterest[indexPath.row].name
-
         // Configure the cell...
 
+        cell.textLabel?.text = self.pointsOfInterest[indexPath.row].name
         return cell
     }
     

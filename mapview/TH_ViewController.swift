@@ -38,20 +38,32 @@ class TH_ViewController: UIViewController,MKMapViewDelegate, CLLocationManagerDe
     override func viewDidAppear(animated: Bool) {
         var distance:CLLocationDistance = Constants.distance
         if usersLocation != nil{
-                    println("Custom userslocation \(usersLocation.coordinate.latitude)")
-                    println("places \(places)")
             var region:MKCoordinateRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: usersLocation.coordinate.latitude, longitude: usersLocation.coordinate.longitude), span: MKCoordinateSpan(latitudeDelta: Constants.latitudeDelta, longitudeDelta: Constants.longitudeDelta))
       
             self.mapView.region = region;
             self.mapView.addAnnotations(places);
-            self.mapView.showAnnotations(places, animated: true)
         }
     }
     override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
         
     }
-    
+    func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
+        var anView = mapView.dequeueReusableAnnotationViewWithIdentifier(Constants.annotationIdentifier) as?MKPinAnnotationView
+        if anView == nil {
+            anView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: Constants.annotationIdentifier)
+            anView!.canShowCallout = true
+            anView!.pinColor = .Green
+            anView!.animatesDrop = true
+        }
+        else {
+            anView!.annotation = annotation
+        }
+        return anView
+    }
+    func mapView(mapView: MKMapView!, didAddAnnotationViews views: [AnyObject]!) {
+      println("annotations added")
+    }
 }
 
     

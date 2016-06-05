@@ -13,14 +13,11 @@ import CoreLocation
 class TH_ViewController: UIViewController,MKMapViewDelegate, CLLocationManagerDelegate {
     
 
-    @IBOutlet weak var mapView: MKMapView!{
-        didSet{
-            mapView.delegate = self;
-        }
-    }
+    var mapView: MKMapView!
     var places:Array<MKAnnotation>!
     var usersLocation:CLLocation!
     var annotation:MKAnnotation!
+    var region:MKCoordinateRegion!
     
     
     private struct Constants {
@@ -36,9 +33,14 @@ class TH_ViewController: UIViewController,MKMapViewDelegate, CLLocationManagerDe
     }
 
     override func viewDidAppear(animated: Bool) {
+        //create Mapview 
+        self.mapView = MKMapView(frame: self.view.bounds)
+        self.mapView.delegate = self
+        
         var distance:CLLocationDistance = Constants.distance
+        
         if usersLocation != nil{
-            var region:MKCoordinateRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: usersLocation.coordinate.latitude, longitude: usersLocation.coordinate.longitude), span: MKCoordinateSpan(latitudeDelta: Constants.latitudeDelta, longitudeDelta: Constants.longitudeDelta))
+            self.region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: usersLocation.coordinate.latitude, longitude: usersLocation.coordinate.longitude), span: MKCoordinateSpan(latitudeDelta: Constants.latitudeDelta, longitudeDelta: Constants.longitudeDelta))
             
             self.mapView.region = region;
             self.mapView.addAnnotations(places);
@@ -46,10 +48,12 @@ class TH_ViewController: UIViewController,MKMapViewDelegate, CLLocationManagerDe
             self.mapView.showsPointsOfInterest = true
             self.mapView.showsBuildings = true
         }
+        self.view.addSubview(self.mapView)
         
     }
     
     func mapView(mapView: MKMapView!, didUpdateUserLocation userLocation: MKUserLocation!) {
+        
         mapView.setCenterCoordinate(usersLocation.coordinate, animated: true)
     }
     

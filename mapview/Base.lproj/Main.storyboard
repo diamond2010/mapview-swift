@@ -15,25 +15,8 @@
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xh5-cs-IzO">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <connections>
-                                    <outlet property="delegate" destination="vXZ-lx-hvc" id="Xdw-5g-bzw"/>
-                                </connections>
-                            </mapView>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="xh5-cs-IzO" secondAttribute="trailing" id="85F-JJ-LeV"/>
-                            <constraint firstItem="xh5-cs-IzO" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="9zZ-C8-qbP"/>
-                            <constraint firstItem="xh5-cs-IzO" firstAttribute="bottom" secondItem="2fi-mo-0CV" secondAttribute="top" id="BJK-Zw-ES0"/>
-                            <constraint firstItem="xh5-cs-IzO" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="YNd-Yj-bwi"/>
-                        </constraints>
                     </view>
-                    <connections>
-                        <outlet property="mapView" destination="xh5-cs-IzO" id="3Ud-bw-iKH"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>

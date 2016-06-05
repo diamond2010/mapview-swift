@@ -10,6 +10,9 @@ import UIKit
 import MapKit
 import CoreLocation
 
+class TH_Annotation: MKPointAnnotation, MKAnnotation{
+}
+
 
 class TH_LocalSearchTableViewController: UITableViewController,CLLocationManagerDelegate,MKMapViewDelegate,UISearchBarDelegate, UISearchControllerDelegate {
 
@@ -20,6 +23,7 @@ class TH_LocalSearchTableViewController: UITableViewController,CLLocationManager
     var userLocation:CLLocation = CLLocation()
     var matchingItems:Array<MKMapItem> = []
     var annotations:Array<MKAnnotation> = []
+    
     
     
     private struct Constants {
@@ -84,19 +88,23 @@ class TH_LocalSearchTableViewController: UITableViewController,CLLocationManager
     
 
     //get current userLocation
-    func locationManager(manager: CLLocationManager!, didUpdateToLocation newLocation: CLLocation!, fromLocation oldLocation: CLLocation!) {
-        
-        var center = CLLocationCoordinate2D(latitude: newLocation!.coordinate.latitude, longitude: newLocation!.coordinate.longitude)
-        
-        var region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: Constants.latitudeDelta, longitudeDelta: Constants.longitudeDelta))
-        
-        self.locationManager.stopUpdatingLocation()
-        if self.usersLocationRegion == nil{
-            userLocation = newLocation
+    func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
+       
+        if let newLocation = locations.last as? CLLocation{
+            var center = CLLocationCoordinate2D(latitude: newLocation.coordinate.latitude, longitude: newLocation.coordinate.longitude)
+            
+            var region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: Constants.latitudeDelta, longitudeDelta: Constants.longitudeDelta))
+            
+           // self.locationManager.stopUpdatingLocation()
+            if self.usersLocationRegion == nil{
+                userLocation = newLocation
+            }
             self.usersLocationRegion = region as MKCoordinateRegion
+
+            
         }
-    }
-    // MARK: - Table view data source
+
+    }    // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Potentially incomplete method implementation.

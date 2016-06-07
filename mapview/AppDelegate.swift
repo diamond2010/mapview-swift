@@ -16,6 +16,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        let localSearchContoller:TH_LocalSearchTableViewController = TH_LocalSearchTableViewController()
+        let testcvc:TH_CVTestVC = TH_CVTestVC()
+
+        let nc:UINavigationController = UINavigationController(rootViewController: testcvc)
+        window?.rootViewController = nc
+        nc.viewControllers = [localSearchContoller,testcvc]
+        window?.makeKeyAndVisible()
+        
         return true
     }
 

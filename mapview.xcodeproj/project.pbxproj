@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3E6B72281D076760007253CA /* TH_CVTestVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6B72271D076760007253CA /* TH_CVTestVC.swift */; };
 		3EB6869B1CE0A22D0048F38C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB6869A1CE0A22D0048F38C /* AppDelegate.swift */; };
 		3EB6869D1CE0A22D0048F38C /* TH_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB6869C1CE0A22D0048F38C /* TH_ViewController.swift */; };
-		3EB686A01CE0A22D0048F38C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3EB6869E1CE0A22D0048F38C /* Main.storyboard */; };
 		3EB686A21CE0A22D0048F38C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3EB686A11CE0A22D0048F38C /* Images.xcassets */; };
 		3EB686A51CE0A22D0048F38C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3EB686A31CE0A22D0048F38C /* LaunchScreen.xib */; };
 		3EB686B11CE0A22D0048F38C /* mapviewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB686B01CE0A22D0048F38C /* mapviewTests.swift */; };
@@ -29,11 +29,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3E6B72271D076760007253CA /* TH_CVTestVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TH_CVTestVC.swift; sourceTree = "<group>"; };
 		3EB686951CE0A22D0048F38C /* mapview.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mapview.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3EB686991CE0A22D0048F38C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3EB6869A1CE0A22D0048F38C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3EB6869C1CE0A22D0048F38C /* TH_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TH_ViewController.swift; sourceTree = "<group>"; };
-		3EB6869F1CE0A22D0048F38C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3EB686A11CE0A22D0048F38C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		3EB686A41CE0A22D0048F38C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		3EB686AA1CE0A22D0048F38C /* mapviewTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = mapviewTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -64,6 +64,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3E6B72291D076A6E007253CA /* App */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = App;
+			sourceTree = "<group>";
+		};
 		3EB6868C1CE0A22D0048F38C = {
 			isa = PBXGroup;
 			children = (
@@ -88,9 +95,10 @@
 			isa = PBXGroup;
 			children = (
 				3EB6869A1CE0A22D0048F38C /* AppDelegate.swift */,
+				3E6B72291D076A6E007253CA /* App */,
+				3E6B72271D076760007253CA /* TH_CVTestVC.swift */,
 				3EB686BE1CE22C5F0048F38C /* TH_LocalSearchTableViewController.swift */,
 				3EB6869C1CE0A22D0048F38C /* TH_ViewController.swift */,
-				3EB6869E1CE0A22D0048F38C /* Main.storyboard */,
 				3EB686A11CE0A22D0048F38C /* Images.xcassets */,
 				3EB686A31CE0A22D0048F38C /* LaunchScreen.xib */,
 				3EB686981CE0A22D0048F38C /* Supporting Files */,
@@ -208,7 +216,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3EB686A01CE0A22D0048F38C /* Main.storyboard in Resources */,
 				3EB686A51CE0A22D0048F38C /* LaunchScreen.xib in Resources */,
 				3EB686A21CE0A22D0048F38C /* Images.xcassets in Resources */,
 			);
@@ -229,6 +236,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3EB6869D1CE0A22D0048F38C /* TH_ViewController.swift in Sources */,
+				3E6B72281D076760007253CA /* TH_CVTestVC.swift in Sources */,
 				3EB6869B1CE0A22D0048F38C /* AppDelegate.swift in Sources */,
 				3EB686BF1CE22C5F0048F38C /* TH_LocalSearchTableViewController.swift in Sources */,
 			);
@@ -253,14 +261,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		3EB6869E1CE0A22D0048F38C /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				3EB6869F1CE0A22D0048F38C /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		3EB686A31CE0A22D0048F38C /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (

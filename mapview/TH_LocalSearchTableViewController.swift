@@ -34,16 +34,16 @@ class TH_LocalSearchTableViewController: UITableViewController,CLLocationManager
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if CLLocationManager.locationServicesEnabled(){
-            self.locationManager.delegate = self;
-            self.locationManager.requestWhenInUseAuthorization()
-            self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
-            self.locationManager.startUpdatingLocation()
-            self.searchBar.delegate = self
-            self.searchBar.placeholder = "search here!"
-        }else{
-           let ctrl = UIAlertController(title: "no Services Available", message: "please make sure that you can use locationservices", preferredStyle:UIAlertControllerStyle.Alert)
-        }
+//        if CLLocationManager.locationServicesEnabled(){
+//            self.locationManager.delegate = self;
+//            self.locationManager.requestWhenInUseAuthorization()
+//            self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
+//            self.locationManager.startUpdatingLocation()
+//            self.searchBar.delegate = self
+//            self.searchBar.placeholder = "search here!"
+//        }else{
+//           let ctrl = UIAlertController(title: "no Services Available", message: "please make sure that you can use locationservices", preferredStyle:UIAlertControllerStyle.Alert)
+//        }
     }
     
     //search

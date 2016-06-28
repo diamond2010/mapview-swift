@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         let nc:UINavigationController = UINavigationController(rootViewController: testcvc)
         window?.rootViewController = nc
-        nc.viewControllers = [localSearchContoller,testcvc]
+        nc.viewControllers = [localSearchContoller]
         window?.makeKeyAndVisible()
         
         return true

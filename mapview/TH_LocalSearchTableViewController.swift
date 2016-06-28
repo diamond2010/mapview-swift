@@ -14,9 +14,20 @@ class TH_Annotation: MKPointAnnotation, MKAnnotation{
 }
 
 
-class TH_LocalSearchTableViewController: UITableViewController,CLLocationManagerDelegate,MKMapViewDelegate,UISearchBarDelegate, UISearchControllerDelegate {
+class TH_LocalSearchTableViewController: UITableViewController, CLLocationManagerDelegate,MKMapViewDelegate,UISearchBarDelegate, UISearchControllerDelegate, UISearchResultsUpdating {
+    
+    var searchBar:UISearchBar = {
+        
+        let sb = UISearchBar()
+        sb.placeholder = "Search Here..."
+        return sb
+        }()
+    
 
-    @IBOutlet weak var searchBar: UISearchBar!
+    var searchCtrl = UISearchController(searchResultsController: nil)
+    
+    
+    
     let locationManager = CLLocationManager()
     var pointsOfInterest:Array<MKMapItem> = []
     var usersLocationRegion:MKCoordinateRegion!
@@ -30,10 +41,30 @@ class TH_LocalSearchTableViewController: UITableViewController,CLLocationManager
         static let latitudeDelta:Double = 0.112872
         static let longitudeDelta:Double = 0.109863
         static let toMapIdentifier = "toMap"
+        static let cellId = "cell"
    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: Constants.cellId)
+        searchCtrl.searchResultsUpdater = self
+        searchCtrl.dimsBackgroundDuringPresentation = true
+        searchCtrl.searchBar.sizeToFit()
+        definesPresentationContext = true
+        tableView.tableHeaderView = UIView(frame: CGRectMake(0, 0, 320, 100))
+        
+        tableView.tableHeaderView = searchCtrl.searchBar
+        
+        tableView.tableHeaderView?.backgroundColor = UIColor.greenColor()
+        
+        
+        
+        
+        navigationController?.navigationBar.barTintColor = UIColor.purpleColor()
+        navigationController?.toolbar.barTintColor = UIColor.grayColor()
+        
+        
 //        if CLLocationManager.locationServicesEnabled(){
 //            self.locationManager.delegate = self;
 //            self.locationManager.requestWhenInUseAuthorization()
@@ -46,6 +77,10 @@ class TH_LocalSearchTableViewController: UITableViewController,CLLocationManager
 //        }
     }
     
+    
+    func updateSearchResultsForSearchController(searchController: UISearchController) {
+        println("searching")
+    }
     //search
     func searchForPointOfInterests(searchString:String){
         if self.usersLocationRegion != nil{
@@ -79,7 +114,7 @@ class TH_LocalSearchTableViewController: UITableViewController,CLLocationManager
             }
         }
     }
-    
+
     func clear(){
         self.pointsOfInterest = []
         self.annotations = []
@@ -115,13 +150,13 @@ class TH_LocalSearchTableViewController: UITableViewController,CLLocationManager
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        return pointsOfInterest.count
+        return 10
     }
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! UITableViewCell
         // Configure the cell...
-
-        cell.textLabel?.text = self.pointsOfInterest[indexPath.row].name
+        cell.textLabel?.text = "test"
+        //cell.textLabel?.text = self.pointsOfInterest[indexPath.row].name
         return cell
     }
     
@@ -138,13 +173,4 @@ class TH_LocalSearchTableViewController: UITableViewController,CLLocationManager
         searchForPointOfInterests(self.searchBar.text);
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == Constants.toMapIdentifier{
-            if let mvc = segue.destinationViewController as? TH_ViewController{
-                mvc.places = self.annotations as [MKAnnotation]
-                mvc.usersLocation = userLocation
-            }
-
-        }
-    }
 }
